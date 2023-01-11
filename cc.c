@@ -83,6 +83,8 @@ CcMain(
 
       p = Includes;
 
+      StringListReverse(&Args.IncludePaths);
+
       while (SUCCEEDED(hr) && *p)
       {
          PWSTR Path = NULL;
@@ -100,6 +102,8 @@ CcMain(
 
          p += 2;
       }
+
+      StringListReverse(&Args.IncludePaths);
 
       free(SdkVersion);
    }
@@ -144,6 +148,8 @@ CcMain(
       *p = NULL;
       p = LibPaths;
 
+      StringListReverse(&Args.Base.LibraryPaths);
+
       while (SUCCEEDED(hr) && *p)
       {
          PWSTR Path = NULL;
@@ -182,6 +188,8 @@ CcMain(
 
          p += 4;
       }
+
+      StringListReverse(&Args.Base.LibraryPaths);
 
       free(SdkVersion);
    }
